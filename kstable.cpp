@@ -2,29 +2,29 @@
 #include <algorithm>
 using namespace std;
 int main() {
-   int p[5]={0,1,2,5,6};
+   int profit[5]={0,1,2,5,6};
    int wt[5]={0,2,3,4,5};
-   int m=8,n=4;
-   int k[5][9];
+   int cap=8,size=4;
+   int table[5][9];
    
-   for(int i=0;i<=n;i++)
+   for(int i=0;i<=size;i++)
    {
-       for(int w=0;w<=m;w++)
+       for(int j=0;j<=cap;j++)
        {
-           if(i==0 || w==0)
+           if(i==0 || j==0)
            
-               k[i][w]=0;
+               table[i][j]=0;
            
-           else if(wt[i]<=w)
+           else if(wt[i]<=j)
            
-               k[i][w]=max(p[i]+k[i-1][w-wt[i]], k[i-1][w]);
-           
+               table[i][j]=max(profit[i]+table[i-1][j-wt[i]], table[i-1][j]);
            else
-           k[i][w]=k[i-1][w];
+           table[i][j]=table[i-1][j];
            
-           cout<<k[n][m];
+          
        }
-      cout<<endl;
+    
         
    }
+     cout<<table[size][cap];
 }
