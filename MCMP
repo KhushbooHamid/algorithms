@@ -3,17 +3,17 @@
 using namespace std;
 int main() {
    int n=5;
-   int p[]={5,4,6,2,7};
-   int m[5][5]={0};
+   int p[]={5,4,6,2,7};//5*4,4*6,6*2,2*7
+   int m[5][5]={0};//min values for multiplication
    int s[5][5]={0};
-   int  j, min,q;
-   for(int d=1;d<n-1;d++)
+   int  j,min,q;
+   for(int d=1;d<n-1;d++) //d=difference btw i&j in upper half triangle i.e 1,2&3... this loop is for difference such that i+d=j
    {
-       for(int i=1;i<n-d;i++)
+       for(int i=1;i<n-d;i++)//for rows 3,2,1
        {
            j=i+d;
-           min=32767;
-           for(int k=i;k<=j-i;k++)
+           min=327670;
+           for(int k=i;k<=j-1;k++)
            {
                q=m[i][k]+m[k+1][j]+p[i-1]*p[k]*p[j];
                if(q<min)
@@ -26,7 +26,16 @@ int main() {
            m[i][j]=min;
        }
    }
-   cout<<m[1][n-1];
+   cout<<m[1][n-1]<<endl;
+   for(int i=0;i<5;i++)
+   {
+       for(int j=0;j<5;j++)
+       {
+             cout<<m[i][j]<<" ";
+       }
+       cout<<endl;
+   }
+ 
 
     return 0;
 }
